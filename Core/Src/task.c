@@ -74,8 +74,13 @@ static void TaskMain( void const *pvParameters )
 	/* TODO #1:
 		Task1을 생성
 		use 'xTaskCreate' */
-#if 0
-
+#if 1 //0
+	xTaskCreate(	(TaskFunction_t)Task1,		/* Pointer to the function that implements the task. */
+						"Task1",	/* Text name for the task.  This is to facilitate debugging only. */
+						128,		/* Stack depth - most small microcontrollers will use much less stack than this. , word 단위 */
+						NULL,		/* We are not using the task parameter. */
+						TASK_1_PRIO,	/* This task will run at this priority */
+						&xHandle1 );		/* We are not using the task handle. */
 #endif // TODO #1
 
 	/* Create the other task in exactly the same way. */
@@ -92,8 +97,8 @@ static void TaskMain( void const *pvParameters )
 	/* TODO #2:
 		Task1을 중지
 		use 'vTaskSuspend' */
-#if 0
-
+#if 1
+	vTaskSuspend(xHandle1);
 #endif // TODO #2
 
 	/* TODO #4:
