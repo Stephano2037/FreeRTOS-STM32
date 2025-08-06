@@ -54,6 +54,7 @@ void USER_THREADS( void )
 	xTaskCreate(	(TaskFunction_t)TaskMain,		/* Pointer to the function that implements the task. */
 					"TaskMain",	/* Text name for the task.  This is to facilitate debugging only. */
 					256,		/* Stack depth - most small microcontrollers will use much less stack than this. */
+					// 128 은 워드로서 512 바이트
 					NULL,		/* We are not using the task parameter. */
 					TASK_MAIN_PRIO,	/* This task will run at this priority */
 					&xHandleMain );		/* We are not using the task handle. */
@@ -97,7 +98,7 @@ static void TaskMain( void const *pvParameters )
 	/* TODO #2:
 		Task1을 중지
 		use 'vTaskSuspend' */
-#if 1
+#if 0 // no suspend and it will be print "a" for loooong tme
 	vTaskSuspend(xHandle1);
 #endif // TODO #2
 
@@ -131,9 +132,10 @@ static void Task1( void const *pvParameters )
 	/* TODO #3:
 		코드를 실행 하여 보고
 		vTaskDelay() 코드를 주석 처리한 후 그 결과를 설명한다 */
-#if 0 // No comment
-vTaskDelay (pdMS_TO_TICKS (1000));
-printf("a"); fflush(stdout);	// 문자 'a' 출력
+#if 1 // No comment (if 1 and delete vTaskDelay -> only task 1 acting inifinitely )
+vTaskDelay (pdMS_TO_TICKS (100));
+printf("a");
+fflush(stdout);	// 문자 'a' 출력
 #endif // TODO #3
 
 		task1timer++;
