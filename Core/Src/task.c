@@ -105,6 +105,8 @@ static void TaskMain( void const *pvParameters )
 	/* TODO #4:
 		Task1의 우선 순위를 'TASK_3_PRIO' 으로 변경
 		use 'vTaskPrioritySet' and 'vTaskResume' */
+	//vTaskPrioritySet(xHandle1, TASK_2_PRIO);
+	vTaskPrioritySet(xHandle1, TASK_3_PRIO);
 #if 0
 
 #endif // TODO #4
@@ -133,7 +135,7 @@ static void Task1( void const *pvParameters )
 		코드를 실행 하여 보고
 		vTaskDelay() 코드를 주석 처리한 후 그 결과를 설명한다 */
 #if 1 // No comment (if 1 and delete vTaskDelay -> only task 1 acting inifinitely )
-vTaskDelay (pdMS_TO_TICKS (100));
+vTaskDelay (pdMS_TO_TICKS (1000));
 printf("a");
 fflush(stdout);	// 문자 'a' 출력
 #endif // TODO #3
@@ -158,7 +160,7 @@ static void Task2( const struct Param_types *Param )
 	/* TODO #3:
 		코드를 실행 하여 보고
 		vTaskDelay() 코드를 주석 처리한 후 그 결과를 설명한다 */
-#if 0 // No comment
+#if 1 // No comment
 vTaskDelay (pdMS_TO_TICKS (1000));
 printf("b"); fflush(stdout);	// 문자 'a' 출력
 #endif // TODO #3
