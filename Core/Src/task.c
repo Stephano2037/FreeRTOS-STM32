@@ -118,6 +118,7 @@ static void TaskMain( void const *pvParameters )
 static void Task1( void const *pvParameters )
 {
 	const char *pcTaskName = "Task1";
+	char s[1024]; //configMINIMAL_STACK_SIZE 가 128인데 1024 할당하면 스택사이즈 넘기는 것
 
 	pvParameters = pvParameters; // for compiler warning
 
